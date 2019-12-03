@@ -1,10 +1,13 @@
 import React from 'react';
-import { Card, } from 'semantic-ui-react';
+import { Button, Card, } from 'semantic-ui-react';
 
-const FlashCard = ({ question, }) => (
+const FlashCard = ({ id, question, removeFlashCard }) => (
   <Card>
     <Card.Content>
       <Card.Header>{ question }</Card.Header>
+    </Card.Content>
+    <Card.Content>
+      <Button onClick={() => removeFlashCard(id)}>Remove</Button>
     </Card.Content>
   </Card>
 );

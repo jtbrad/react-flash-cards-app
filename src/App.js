@@ -19,6 +19,16 @@ class App extends React.Component {
     this.setState({ flashCards: [...this.state.flashCards, flashCard], })
   };
 
+  removeFlashCard = (id) => {
+    const flashCards = this.state.flashCards.filter( flashCard => {
+      if (flashCard.id !== id) {
+        return flashCard;
+      }
+    });
+    this.setState({flashCards: [...flashCards], });
+    
+  };
+
   render() {
     const { flashCards, } = this.state;
     return (
@@ -27,7 +37,7 @@ class App extends React.Component {
         <br />
         <FlashCardForm addFlashCard={this.addFlashCard}/>
         <br />
-        <FlashCards flashCards={flashCards} />
+        <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
       </Container>
     );
   };
