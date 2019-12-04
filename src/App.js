@@ -6,9 +6,9 @@ import { Container, Header } from 'semantic-ui-react';
 class App extends React.Component {
   state = {
     flashCards: [
-      { id: 1, question: "question 1", answer: "answer 1", isFront: false, },
-      { id: 2, question: "question 2", answer: "answer 2", isFront: false, },
-      { id: 3, question: "question 3", answer: "answer 3", isFront: false, },
+      { id: 1, question: "question 1", answer: "answer 1", isFront: true, },
+      { id: 2, question: "question 2", answer: "answer 2", isFront: true, },
+      { id: 3, question: "question 3", answer: "answer 3", isFront: true, },
     ],
   };
 
@@ -19,6 +19,14 @@ class App extends React.Component {
     this.setState({ flashCards: [...this.state.flashCards, flashCard], })
   };
 
+  flipCard = (id) => {
+    const flashCards = this.state.flashCards.map( flashCard => {
+      if (flashCard.id === id) {
+        return flashCard;
+      }
+    });
+  };
+
   removeFlashCard = (id) => {
     const flashCards = this.state.flashCards.filter( flashCard => {
       if (flashCard.id !== id) {
@@ -26,7 +34,6 @@ class App extends React.Component {
       }
     });
     this.setState({flashCards: [...flashCards], });
-    
   };
 
   render() {
@@ -37,7 +44,7 @@ class App extends React.Component {
         <br />
         <FlashCardForm addFlashCard={this.addFlashCard}/>
         <br />
-        <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
+        <FlashCards flashCards={flashCards} flipCard={this.flipCard} removeFlashCard={this.removeFlashCard} />
       </Container>
     );
   };
