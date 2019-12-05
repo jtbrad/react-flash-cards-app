@@ -29,6 +29,18 @@ class App extends React.Component {
     this.setState({ flashCards: [...this.state.flashCards, flashCard], });
   };
 
+  editFlashCard = (id, flashCardData) => {
+    const newFlashCard = { id: id, ...flashCardData, };
+    const flashCards = this.state.flashCards.map( flashCard => {
+      if (flashCard.id === id) {
+        return newFlashCard;
+      } else {
+        return flashCard;
+      }
+    });
+    this.setState({flashCards});
+  };
+
   removeFlashCard = (id) => {
     const flashCards = this.state.flashCards.filter( flashCard => {
       if (flashCard.id !== id) {
@@ -58,7 +70,7 @@ class App extends React.Component {
         }
         <br />
         <Header as="h2">Click Card To Reveal Answer</Header>
-        <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
+        <FlashCards flashCards={flashCards} editFlashCard={this.editFlashCard} removeFlashCard={this.removeFlashCard} />
       </Container>
     );
   };

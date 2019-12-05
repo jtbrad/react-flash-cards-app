@@ -10,7 +10,12 @@ class FlashCardForm extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addFlashCard(this.state);
+    if (this.props.flashCard.id !== null) {
+      this.props.editFlashCard(this.props.flashCard.id, this.state);
+      this.props.toggleForm();
+    } else {
+      this.props.addFlashCard(this.state);
+    }
     this.setState({ question: "", answer: "", });
   };
 
