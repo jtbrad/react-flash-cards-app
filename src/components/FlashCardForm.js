@@ -4,6 +4,12 @@ import { Form, } from 'semantic-ui-react';
 class FlashCardForm extends React.Component {
   state = { question: "", answer: "", };
 
+  componentDidMount() {
+    if (this.props.id !== null) {
+      this.setState({ ...this.props.flashCard })
+    }
+  };
+  
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value, });
   };
@@ -27,7 +33,7 @@ class FlashCardForm extends React.Component {
           label={"Question"}
           placeholder="Enter Question"
           name="question"
-          value={this.state.queston}
+          value={this.state.question}
           onChange={this.handleChange}
         />
         <Form.Input 
