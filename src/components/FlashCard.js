@@ -10,12 +10,12 @@ class FlashCard extends React.Component {
 
   render() {
     return (
-      <Card>
+      <Card onClick={() => this.flipCard()}>
         <Card.Content>
           <Card.Header>{ this.state.isFront ? this.props.question : this.props.answer }</Card.Header>
         </Card.Content>
         <Card.Content>
-          <Button onClick={() => this.flipCard()}>Flip Card</Button>
+          <Button>Edit</Button>
           <Button onClick={() => this.props.removeFlashCard(this.props.id)}>Remove</Button>
         </Card.Content>
       </Card>

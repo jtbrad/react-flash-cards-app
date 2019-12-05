@@ -57,6 +57,7 @@ class App extends React.Component {
           null
         }
         <br />
+        <Header as="h2">Click Card To Reveal Answer</Header>
         <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
       </Container>
     );
