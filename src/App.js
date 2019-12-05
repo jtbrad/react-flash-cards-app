@@ -6,25 +6,26 @@ import { Container, Header } from 'semantic-ui-react';
 class App extends React.Component {
   state = {
     flashCards: [
-      { id: 1, question: "question 1", answer: "answer 1", isFront: true, },
-      { id: 2, question: "question 2", answer: "answer 2", isFront: true, },
-      { id: 3, question: "question 3", answer: "answer 3", isFront: true, },
+      { id: 1,
+        question: "What is state?",
+        answer: "A JavaScript object that temporarily stores properties.",
+      },
+      { id: 2, 
+        question: "How do you prevent the page from refreshing when the submit button is pressed?",
+        answer: "Use the preventDefault function in the submit handler function.",
+      },
+      { id: 3,
+        question: "What npm package is required to use routing in React?", 
+        answer: "react-router-dom",
+      },
     ],
   };
 
   getId = () => Math.floor((1 + Math.random()) * 10000);
 
   addFlashCard = (flashCardData) => {
-    let flashCard = { id: this.getId(), ...flashCardData, isFront: false, }
-    this.setState({ flashCards: [...this.state.flashCards, flashCard], })
-  };
-
-  flipCard = (id) => {
-    const flashCards = this.state.flashCards.map( flashCard => {
-      if (flashCard.id === id) {
-        return flashCard;
-      }
-    });
+    const flashCard = { id: this.getId(), ...flashCardData, };
+    this.setState({ flashCards: [...this.state.flashCards, flashCard], });
   };
 
   removeFlashCard = (id) => {
@@ -44,7 +45,7 @@ class App extends React.Component {
         <br />
         <FlashCardForm addFlashCard={this.addFlashCard}/>
         <br />
-        <FlashCards flashCards={flashCards} flipCard={this.flipCard} removeFlashCard={this.removeFlashCard} />
+        <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
       </Container>
     );
   };
