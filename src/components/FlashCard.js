@@ -16,7 +16,7 @@ class FlashCard extends React.Component {
         </Card.Content>
         <Card.Content>
           <Button onClick={() => this.flipCard()}>Flip Card</Button>
-          <Button onClick={() => this.props.removeFlashCard(this.id)}>Remove</Button>
+          <Button onClick={() => this.props.removeFlashCard(this.props.id)}>Remove</Button>
         </Card.Content>
       </Card>
     );

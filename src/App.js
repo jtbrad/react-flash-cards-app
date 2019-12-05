@@ -34,7 +34,7 @@ class App extends React.Component {
         return flashCard;
       }
     });
-    this.setState({flashCards: [...flashCards], });
+    this.setState({flashCards: flashCards, });
   };
 
   render() {
