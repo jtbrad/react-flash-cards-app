@@ -1,6 +1,6 @@
 import React from 'react';
-import FlashCardForm from './FlashCardForm';
-import FlashCards from './FlashCards'
+import FlashCardForm from './components/FlashCardForm';
+import FlashCards from './components/FlashCards'
 import { Container, Header } from 'semantic-ui-react';
 
 class App extends React.Component {
