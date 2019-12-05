@@ -1,7 +1,7 @@
 import React from 'react';
 import FlashCardForm from './components/FlashCardForm';
 import FlashCards from './components/FlashCards'
-import { Container, Header } from 'semantic-ui-react';
+import { Button, Container, Header } from 'semantic-ui-react';
 
 class App extends React.Component {
   state = {
@@ -19,6 +19,7 @@ class App extends React.Component {
         answer: "react-router-dom",
       },
     ],
+    showForm: false,
   };
 
   getId = () => Math.floor((1 + Math.random()) * 10000);
@@ -37,13 +38,24 @@ class App extends React.Component {
     this.setState({flashCards: flashCards, });
   };
 
+  toggleForm = () => {
+    this.setState({showForm: !this.state.showForm})
+  };
+
   render() {
     const { flashCards, } = this.state;
     return (
       <Container>
         <Header as="h1">React Flash Cards</Header>
         <br />
-        <FlashCardForm addFlashCard={this.addFlashCard}/>
+        <Button onClick={this.toggleForm}>Add Flash Card</Button>
+        <br />
+        {
+          this.state.showForm ?
+          <FlashCardForm addFlashCard={this.addFlashCard}/>
+          :
+          null
+        }
         <br />
         <FlashCards flashCards={flashCards} removeFlashCard={this.removeFlashCard} />
       </Container>
